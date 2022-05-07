@@ -28,3 +28,8 @@
         groups:
           - docker
         append: yes
+
+    - name: Log into DockerHub
+      docker_login:
+        username: "{{ docker_user }}"
+        password: "{{ docker_password }}"

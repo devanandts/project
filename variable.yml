@@ -6,3 +6,4 @@ packages:
 docker_user: "devanandts"
 docker_password: "devanand@2099"
 image_name: "devanandts/flasktest"
+user: "ec2-user"
