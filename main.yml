@@ -34,6 +34,27 @@
         username: "{{ docker_user }}"
         password: "{{ docker_password }}"
 
+    - name: "Restarting and enabling docker service"
+      when: git_status.changed
+      service:
+        name: docker
+        state: restarted
+        enabled: truei
+
+    - name: "build image"
+      when: git_status.changed
+      docker_image:
+        build:
+          path: /var/gitrepo/
+        name: "{{ image_name }}"
+        tag: "{{ item }}"
+        source: build
+        force_tag: yes
+        force_source: yes
+        push: yes
+      with_items:
+        - latest
+
     - name: "Adding a httpd container"
       docker_container:
         name: testcontainer
