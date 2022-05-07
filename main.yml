@@ -34,6 +34,13 @@
         username: "{{ docker_user }}"
         password: "{{ docker_password }}"
 
+    - name: "Restarting and enabling docker service"
+      when: git_status.changed
+      service:
+        name: docker
+        state: restarted
+        enabled: true
+
     - name: "Adding a httpd container"
       docker_container:
         name: testcontainer
