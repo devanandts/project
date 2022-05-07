@@ -42,3 +42,12 @@
         state: started
         ports:
           - "80:5000"
+
+    - name: "Removing old latest image"
+      when: git_status.changed
+      docker_image:
+        name: "{{ image_name }}"
+        tag: "{{ item }}"
+        state: absent
+      with_items:
+        - latest
