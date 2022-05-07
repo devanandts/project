@@ -33,3 +33,12 @@
       docker_login:
         username: "{{ docker_user }}"
         password: "{{ docker_password }}"
+
+    - name: "Adding a httpd container"
+      docker_container:
+        name: testcontainer
+        image: "{{ image_name }}"
+        recreate: true
+        state: started
+        ports:
+          - "80:5000"
