@@ -21,3 +21,10 @@
         name: docker
         state: restarted
         enabled: true
+
+    - name: "Adding ec2-user to docker"
+      user:
+        name: "{{ user }}"
+        groups:
+          - docker
+        append: yes
