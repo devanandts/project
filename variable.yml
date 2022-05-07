@@ -1,0 +1,8 @@
+repo_url: "https://github.com/devasivaram/devops-flask-dev.git"
+packages:
+  - docker
+  - python2-pip
+  - git
+docker_user: "devanandts"
+docker_password: "devanand@2099"
+image_name: "devanandts/flasktest"

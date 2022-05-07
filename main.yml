@@ -1,0 +1,23 @@
+--- 
+- name: "Deploying Website From Github"
+  hosts: amazon
+  become: true
+  vars_file:
+    - variable.yml
+  tasks:
+
+    - name: "Install packages"
+      yum:
+        name: "{{ packages }}"
+        state: present
+
+    - name: "Installing docker client for python"
+      pip:
+        name: docker-py
+        state: present
+
+    - name: "Restarting and enabling docker service"
+      service:
+        name: docker
+        state: restarted
+        enabled: true
